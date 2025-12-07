@@ -1,0 +1,18 @@
+:root {
+    --royal-gold: #D4AF37;
+    --royal-navy: #0A1931;
+    --royal-silver: #C0C0C0;
+    --dark-charcoal: #1A1A1A;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--dark-charcoal) 0%, #000000 100%);
+    color: var(--royal-silver);
+    min
