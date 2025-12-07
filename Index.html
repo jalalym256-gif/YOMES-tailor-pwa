@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مینی‌اپ خیاطی — YONES</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0A1931">
+</head>
+<body>
+    <div class="container">
+        <!-- منوی تنظیمات -->
+        <div class="settings-menu">
+            <button class="settings-btn" onclick="toggleSettings()">
+                <i class="fas fa-cog"></i>
+            </button>
+            <div class="settings-dropdown" id="settingsDropdown">
+                <button onclick="saveData()"><i class="fas fa-save"></i> ذخیره اطلاعات</button>
+                <button onclick="toggleDarkMode()"><i class="fas fa-moon"></i> حالت تاریک</button>
+                <button onclick="toggleLightMode()"><i class="fas fa-sun"></i> حالت روشن</button>
+                <button onclick="printLabel()"><i class="fas fa-print"></i> چاپ لیبل</button>
+            </div>
+        </div>
+
+        <!-- اعلان -->
+        <div id="notification" class="notification"></div>
+
+        <!-- لوگو -->
+        <h1 class="logo">
+            <i class="fas fa-cut"></i> YONES
+        </h1>
+
+        <!-- آمار -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value" id="totalCustomers">0</div>
+                <div class="stat-label">کل مشتریان</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="totalOrders">0</div>
+                <div class="stat-label">سفارشات فعال</div>
+            </div>
+        </div>
+
+        <!-- جستجو -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="جستجوی مشتری بر اساس نام یا شماره">
+            <button onclick="searchCustomer()">
+                <i class="fas fa-search"></i> جستجو
+            </button>
+            <button onclick="addCustomer()">
+                <i class="fas fa-user-plus"></i> مشتری جدید
+            </button>
+        </div>
+
+        <!-- لیست مشتریان -->
+        <div class="customer-list" id="customerList">
+            <div class="empty-state">
+                <i class="fas fa-users"></i>
+                <h3>هنوز مشتری اضافه نشده است</h3>
+                <p>برای شروع، روی دکمه "مشتری جدید" کلیک کنید</p>
+            </div>
+        </div>
+
+        <!-- پروفایل مشتری (مخفی) -->
+        <div class="profile hidden" id="profilePage">
+            <button onclick="backHome()">
+                <i class="fas fa-arrow-right"></i> بازگشت
+            </button>
+            <h2 id="profileName"></h2>
+            <h3 id="profilePhone"></h3>
+            
+            <!-- اندازه‌گیری‌ها -->
+            <div class="measurements-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>اندازه</th>
+                            <th>مقدار</th>
+                        </tr>
+                    </thead>
+                    <tbody id="measurementsBody">
+                        <!-- اندازه‌گیری‌ها اینجا ساخته می‌شوند -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+    </script>
+</body>
+</html>
